@@ -29,6 +29,12 @@
                  <b-form-text>Guests:</b-form-text>
                 <b-form-input type="text" placeholder="Guests" v-model="info.guests"/>
               </b-form-group>
+              <b-form-group>
+                 <b-form-text>Service charge:</b-form-text>
+                <b-form-input type="number" placeholder="Service charge" v-model="info.serviceCharge"/>&nbsp;
+                <b-button variant="outline-primary" @click="info.serviceCharge = 10">+10%</b-button>&nbsp;
+                <b-button variant="outline-danger" @click="info.serviceCharge = 0">0%</b-button>&nbsp;
+              </b-form-group>
             </b-form>
           </b-card-text>
         </b-card>
@@ -85,7 +91,8 @@ export default {
       openedAt: '',
       printedAt: '',
       table: '0 (Феймос)',
-      guests: '1'
+      guests: '1',
+      serviceCharge: 0,
     },
     products: [],
   }),
@@ -101,10 +108,12 @@ export default {
       this.products = this.products.splice(index, 1)
     },
     print() {
+      const height = this.$refs.receipt.$el.offsetHeight
       const p = new Printd()
       p.print(this.$refs.receipt.$el, [`.receipt {
   background-color: #fff;
-  width: 330px;
+  width: 100%;
+  height: ${height}px;
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

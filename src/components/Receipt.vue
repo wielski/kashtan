@@ -20,7 +20,7 @@
           <td>{{ info.openedAt }}</td>
         </tr>
         <tr>
-          <td><b>Printer at</b></td>
+          <td><b>Printed at</b></td>
           <td>{{ info.printedAt }}</td>
         </tr>
         <tr>
@@ -53,6 +53,20 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="receipt__total receipt__total_service" v-if="info && parseInt(info.serviceCharge) > 0">
+      <div class="receipt__total-col">
+        Service charge
+      </div>
+      <div class="receipt__total-col receipt__total-col_line">
+        <div class="receipt__total-line"></div>
+      </div>
+      <div class="receipt__total-col">
+        <div class="receipt__total-sum receipt__total-sum_service">
+          {{ (total * (parseInt(info.serviceCharge)) / 100).toFixed(2) }} ლ
+        </div>
+      </div>
     </div>
 
     <div class="receipt__total" v-if="products">
@@ -90,6 +104,10 @@ export default {
 
       for (let product of this.products) {
         total += (parseInt(product.qty) * parseFloat(product.price))
+      }
+
+      if (this.info && parseInt(this.info.serviceCharge) > 0) {
+        total += (total * (parseInt(this.info.serviceCharge)) / 100)
       }
 
       return total.toFixed(2)
@@ -178,5 +196,13 @@ export default {
   font-size: 18px;
   font-weight: 600;
   text-align: right;
+}
+
+.receipt__total_service {
+  padding-bottom: 0;
+}
+
+.receipt__total-sum_service {
+  font-size: 16px;
 }
 </style>
