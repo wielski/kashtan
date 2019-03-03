@@ -110,7 +110,8 @@ export default {
     print() {
       const height = this.$refs.receipt.$el.offsetHeight
       const p = new Printd()
-      p.print(this.$refs.receipt.$el, [`.receipt {
+      p.print(this.$refs.receipt.$el, [`@page { size: 80mm ${height}px; }
+.receipt {
   background-color: #fff;
   width: 100%;
   height: ${height}px;
