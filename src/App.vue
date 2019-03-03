@@ -113,7 +113,7 @@ export default {
       p.print(this.$refs.receipt.$el, [`@page { size: 80mm ${height}px; }
 .receipt {
   background-color: #fff;
-  width: 100%;
+  width: 88mm;
   height: ${height}px;
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
