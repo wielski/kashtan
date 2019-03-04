@@ -205,4 +205,8 @@ export default {
 .receipt__total-sum_service {
   font-size: 16px;
 }
+
+.receipt__footer img {
+  width: 100%;
+}
 </style>

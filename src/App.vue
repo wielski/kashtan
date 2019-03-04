@@ -195,6 +195,18 @@ export default {
   font-size: 18px;
   font-weight: 600;
   text-align: right;
+}
+
+.receipt__total_service {
+  padding-bottom: 0;
+}
+
+.receipt__total-sum_service {
+  font-size: 16px;
+}
+
+.receipt__footer img {
+  width: 100%;
 }`])
     },
   },
