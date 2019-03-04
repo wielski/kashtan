@@ -119,7 +119,7 @@ export default {
 <style scoped>
 .receipt {
   background-color: #fff;
-  width: 330px;
+  width: 380px;
 }
 
 .receipt__header {
